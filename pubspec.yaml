@@ -39,7 +39,9 @@ dependencies:
   get: ^4.7.2
   http:
   keyboard_dismisser:
-  image_picker: ^0.8.4+4
+  flutter_localization: 
+  
+  
 
 
 dev_dependencies:

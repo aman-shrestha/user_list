@@ -20,7 +20,7 @@ class UserAddView extends GetView<UserAddController> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const Text('Add User'),
+          title: Text('addUser'.tr),
           centerTitle: false,
         ),
         body: Padding(
@@ -31,59 +31,73 @@ class UserAddView extends GetView<UserAddController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("First Name: "),
+                  Text("firstName".tr),
                   SizedBox(height: 10),
                   TextFormFieldReusable(
-                    hint: "Enter First Name",
+                    hint: "enterFirstName".tr,
                     textEditingController: firstName,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'First name is required';
+                        return 'errorFirstName'.tr;
                       }
                       return null;
                     },
                   ),
                   SizedBox(height: 20),
-                  Text("Last Name: "),
+                  Text("lastName".tr),
                   SizedBox(height: 10),
                   TextFormFieldReusable(
-                    hint: "Enter Last Name",
+                    hint: "enterLastName".tr,
                     textEditingController: lastName,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Last name is required';
+                        return 'errorLastName'.tr;
                       }
                       return null;
                     },
                   ),
                   SizedBox(height: 20),
-                  Text("Email Address: "),
+                  Text("email".tr),
                   SizedBox(height: 10),
                   TextFormFieldReusable(
-                    hint: "Enter Email Address",
+                    hint: "enterEmail".tr,
                     textEditingController: email,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Email is required';
+                        return 'errorEmail'.tr;
                       }
                       if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                           .hasMatch(value)) {
-                        return 'Enter a valid email address';
+                        return 'validEmail'.tr;
                       }
                       return null;
                     },
                   ),
                   SizedBox(height: 20),
-                  Text("Upload Image:"),
+                  Text("uploadImage".tr),
                   SizedBox(height: 10),
-                  ImageUploadContainer(),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey.withOpacity(0.5),
+                      ),
+                    ),
+                    child: Center(
+                        child: Icon(
+                      Icons.upload_file_outlined,
+                      size: 100,
+                    )),
+                  ),
+                  // ImageUploadContainer(),
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         Get.snackbar(
-                          'Successful',
-                          'SUCCESSFULLY ADDED THE USER.',
+                          'successful'.tr,
+                          'successfullyUpdated'.tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.green,
                           colorText: Colors.white,
@@ -93,8 +107,8 @@ class UserAddView extends GetView<UserAddController> {
                         email.clear();
                       } else {
                         Get.snackbar(
-                          'Error',
-                          'Please fill all required fields correctly.',
+                          'error'.tr,
+                          'errorDetail'.tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.red,
                           colorText: Colors.white,
@@ -111,7 +125,7 @@ class UserAddView extends GetView<UserAddController> {
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: Center(
                           child: Text(
-                            "SUBMIT",
+                            "submit".tr,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),

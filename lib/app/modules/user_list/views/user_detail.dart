@@ -65,7 +65,7 @@ class UserDetailView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                           child: Text(
-                            "Update",
+                            "update".tr,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
@@ -74,8 +74,8 @@ class UserDetailView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.snackbar(
-                          'Successful',
-                          'SUCCESSFULLY DELETED THE USER.',
+                          'successful'.tr,
+                          'successfullyDeleted'.tr,
                           snackPosition: SnackPosition.BOTTOM,
                           backgroundColor: Colors.redAccent,
                           colorText: Colors.white,
@@ -89,7 +89,7 @@ class UserDetailView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                           child: Text(
-                            "Delete",
+                            "delete".tr,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),

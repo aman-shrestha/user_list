@@ -41,7 +41,7 @@ class SearchView extends StatelessWidget {
           child: TextField(
             controller: searchController,
             decoration: InputDecoration(
-              hintText: "Search products...",
+              hintText: "searchUsers".tr,
               prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
               border: InputBorder.none,
             ),
@@ -59,7 +59,7 @@ class SearchView extends StatelessWidget {
               child: searchResult.isEmpty
                   ? Center(
                       child: Text(
-                        'No results found',
+                        'noResultsFound'.tr,
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                     )

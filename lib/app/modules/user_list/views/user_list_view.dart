@@ -19,7 +19,7 @@ class UserListView extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text("User List"),
+        title: Text('hello'.tr),
         actions: [
           GestureDetector(
             onTap: () {
@@ -33,7 +33,7 @@ class UserListView extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Add User",
+                    "addUser".tr,
                     style: TextStyle(),
                   ),
                   SizedBox(width: 10),
@@ -68,7 +68,7 @@ class UserListView extends StatelessWidget {
                   child: TextField(
                     // controller: searchController,
                     decoration: InputDecoration(
-                      hintText: "Search Users ...",
+                      hintText: "searchUsers".tr,
                       prefixIcon: const Icon(Icons.search),
 
                       // // labelText: 'Tap to show the keyboard',
