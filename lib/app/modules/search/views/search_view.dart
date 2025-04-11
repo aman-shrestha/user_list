@@ -32,25 +32,23 @@ class SearchView extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(10),
+        title: TextField(
+          controller: searchController,
+          style: const TextStyle(
+            color: Colors.black, // Make sure text color is visible
+            fontSize: 16,
           ),
-          child: TextField(
-            controller: searchController,
-            decoration: InputDecoration(
-              hintText: "searchUsers".tr,
-              prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
-              border: InputBorder.none,
-            ),
-            onChanged: (value) {
-              searchQuery(value); // Call searchQuery on every text change
-            },
+          decoration: InputDecoration(
+            hintText: "searchUsers".tr,
+            hintStyle: TextStyle(color: Colors.grey[600]),
+            prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
+            border: InputBorder.none,
           ),
+          onChanged: (value) {
+            searchQuery(value);
+          },
         ),
-        centerTitle: true,
+        centerTitle: false,
       ),
       body: Obx(
         () {
@@ -63,37 +61,35 @@ class SearchView extends StatelessWidget {
                         style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                     )
-                  : Expanded(
-                      child: ListView.builder(
-                        itemCount: searchResult.length,
-                        itemBuilder: (context, index) {
-                          final user = searchResult[index];
-                          return GestureDetector(
-                            onTap: () {
-                              showModalBottomSheet(
-                                context: context,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                      top: Radius.circular(20)),
-                                ),
-                                isScrollControlled:
-                                    false, // keep it false for compact size
-                                builder: (BuildContext context) {
-                                  return UserDetailView(user: user);
-                                },
-                              );
-                            },
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(user.avatar ?? ''),
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: searchResult.length,
+                      itemBuilder: (context, index) {
+                        final user = searchResult[index];
+                        return GestureDetector(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20)),
                               ),
-                              title: Text('${user.firstName} ${user.lastName}'),
-                              subtitle: Text(user.email ?? ''),
+                              isScrollControlled:
+                                  false, // keep it false for compact size
+                              builder: (BuildContext context) {
+                                return UserDetailView(user: user);
+                              },
+                            );
+                          },
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(user.avatar ?? ''),
                             ),
-                          );
-                        },
-                      ),
+                            title: Text('${user.firstName} ${user.lastName}'),
+                            subtitle: Text(user.email ?? ''),
+                          ),
+                        );
+                      },
                     ));
         },
       ),
